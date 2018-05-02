@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="signup-page signup-page-hidden" id="signup-page">
+  <div class="signup-mainheader">
+    <h1>Регистрация</h1>
+  </div>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    {% if user_form.non_field_errors or profile_form.non_field_errors %}
+    <div class="form-errors">
+      <ul>
+        {% for non_field_error in user_form.non_field_errors %}
+        <li>{{ non_field_error }}</li>
+
+        {% endfor %}
+        {% for non_field_error in profile_form.non_field_errors %}
+        <li>{{ non_field_error }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <div class="inputline-wrapper">
+      <div class="inputline clearfix">
+        <div class="inputline-labelblock">
+          <label for="{{ user_form.username.id_for_label }}">Никнейм</label>
+        </div>
+        <div class="inputline-inputblock">
+          {{ user_form.username }}
+        </div>
+      </div>
+
+      {% if user_form.username.errors %}
+      <div class="inputline-errors">
+        {{ user_form.username.errors }}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="inputline-wrapper">
+      <div class="inputline clearfix">
+        <div class="inputline-labelblock">
+          <label for="{{ user_form.email.id_for_label }}">E-mail</label>
+        </div>
+        <div class="inputline-inputblock">
+          {{ user_form.email }}
+        </div>
+      </div>
+
+      {% if user_form.email.errors %}
+      <div class="inputline-errors">
+        {{ user_form.email.errors }}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="inputline-wrapper">
+      <div class="inputline clearfix">
+        <div class="inputline-labelblock">
+          <label for="{{ user_form.password.id_for_label }}">Пароль</label>
+        </div>
+        <div class="inputline-inputblock">
+          {{ user_form.password }}
+        </div>
+      </div>
+
+      {% if user_form.password.errors %}
+      <div class="inputline-errors">
+        {{ user_form.password.errors }}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="inputline-wrapper">
+      <div class="inputline clearfix">
+        <div class="inputline-labelblock">
+          <label for="{{ user_form.password_confirmation.id_for_label }}">Подтвердите пароль</label>
+        </div>
+        <div class="inputline-inputblock">
+          {{ user_form.password_confirmation }}
+        </div>
+      </div>
+
+      {% if user_form.password_confirmation.errors %}
+      <div class="inputline-errors">
+        {{ user_form.password_confirmation.errors }}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="inputline-wrapper">
+      <div class="inputline clearfix">
+        <div class="inputline-labelblock">
+          <label for="{{ user_form.first_name.id_for_label }}">Имя</label>
+        </div>
+        <div class="inputline-inputblock">
+          {{ user_form.first_name }}
+        </div>
+      </div>
+
+      {% if user_form.first_name.errors %}
+      <div class="inputline-errors">
+        {{ user_form.first_name.errors }}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="inputline-wrapper">
+      <div class="inputline clearfix">
+        <div class="inputline-labelblock">
+          <label for="{{ user_form.last_name.id_for_label }}">Фамилия</label>
+        </div>
+        <div class="inputline-inputblock">
+          {{ user_form.last_name }}
+        </div>
+      </div>
+
+      {% if user_form.last_name.errors %}
+      <div class="inputline-errors">
+        {{ user_form.last_name.errors }}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="inputline-wrapper">
+      <div class="inputline clearfix">
+        <div class="inputline-labelblock">
+          <label for="{{ profile_form.patronymic.id_for_label }}">Отчество
+            <span class="not-required">Необязательное поле</span></label>
+        </div>
+        <div class="inputline-inputblock">
+          {{ profile_form.patronymic }}
+        </div>
+      </div>
+
+      {% if profile_form.patronymic.errors %}
+      <div class="inputline-errors">
+        {{ profile_form.patronymic.errors }}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="inputline-wrapper">
+      <div class="inputline clearfix">
+        <div class="inputline-labelblock">
+          <label for="{{ profile_form.birth_date.id_for_label }}">Дата рождения</label>
+        </div>
+        <div class="inputline-inputblock clearfix">
+          <div class="day-of-birth">{{ profile_form.day_of_birth }}</div>
+          <div class="month-of-birth">{{ profile_form.month_of_birth }}</div>
+          <div class="year-of-birth">{{ profile_form.year_of_birth }}</div>
+        </div>
+      </div>
+
+      {% if profile_form.day_of_birth.errors or profile_form.month_of_birth.errors or profile_form.year_of_birth.errors %}
+      <div class="inputline-errors">
+        {{ profile_form.day_of_birth.errors }}
+        {{ profile_form.month_of_birth.errors }}
+        {{ profile_form.year_of_birth.errors }}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="signup-header"><h2>Образование</h2></div>
+    <div class="signup-addeduc-block"><button class="signup-addeduc" id="signup-addeduc" type="button">Добавить образование</button></div>
+
+    {% if error or form.non_field_errors or usereducation_formset.non_form_errors %}
+    <div class="form-errors">
+      <ul>
+        <li>{{ error }}</li>
+
+        {% for non_field_error in form.non_field_errors %}
+        <li>{{ non_field_error }}</li>
+        {% endfor %}
+
+        {% for non_form_error in usereducation_formset.non_form_errors %}
+        <li>{{ non_form_error }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {{ usereducation_formset.non_form_errors }}
+
+    {{ usereducation_formset.management_form }}
+    <div class="signup-educ" id="signup-educ">
+      {% for form in usereducation_formset %}
+      {{form.non_field_errors}}
+      <div class="signup-educ-item">
+        <div class="signup-educ-item-info signup-educ-item-info-hidden">
+          <div class="signup-educ-item-num"><span>#{{ forloop.counter }}</span></div>
+          <div class="signup-educ-item-del">
+            <span>
+              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              	 width="408.483px" height="408.483px" viewBox="0 0 408.483 408.483" style="enable-background:new 0 0 408.483 408.483;"
+              	 xml:space="preserve">
+              	<g>
+              		<path d="M87.748,388.784c0.461,11.01,9.521,19.699,20.539,19.699h191.911c11.018,0,20.078-8.689,20.539-19.699l13.705-289.316
+              			H74.043L87.748,388.784z M247.655,171.329c0-4.61,3.738-8.349,8.35-8.349h13.355c4.609,0,8.35,3.738,8.35,8.349v165.293
+              			c0,4.611-3.738,8.349-8.35,8.349h-13.355c-4.61,0-8.35-3.736-8.35-8.349V171.329z M189.216,171.329
+              			c0-4.61,3.738-8.349,8.349-8.349h13.355c4.609,0,8.349,3.738,8.349,8.349v165.293c0,4.611-3.737,8.349-8.349,8.349h-13.355
+              			c-4.61,0-8.349-3.736-8.349-8.349V171.329L189.216,171.329z M130.775,171.329c0-4.61,3.738-8.349,8.349-8.349h13.356
+              			c4.61,0,8.349,3.738,8.349,8.349v165.293c0,4.611-3.738,8.349-8.349,8.349h-13.356c-4.61,0-8.349-3.736-8.349-8.349V171.329z"/>
+              		<path d="M343.567,21.043h-88.535V4.305c0-2.377-1.927-4.305-4.305-4.305h-92.971c-2.377,0-4.304,1.928-4.304,4.305v16.737H64.916
+              			c-7.125,0-12.9,5.776-12.9,12.901V74.47h304.451V33.944C356.467,26.819,350.692,21.043,343.567,21.043z"/>
+              	</g>
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="inputline-wrapper">
+          <div class="inputline clearfix university">
+            <div class="inputline-labelblock">
+              <label for="{{ form.university.id_for_label }}">Университет</label>
+            </div>
+            <div class="inputline-inputblock">
+              {{ form.university }}
+            </div>
+          </div>
+
+          {% if form.university.errors %}
+          <div class="inputline-errors">
+            {{ form.university.errors }}
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="inputline-wrapper">
+          <div class="inputline clearfix degree">
+            <div class="inputline-labelblock">
+              <label for="{{ form.degree.id_for_label }}">Ступень обучения</label>
+            </div>
+            <div class="inputline-inputblock">
+              {{ form.degree }}
+            </div>
+          </div>
+
+          {% if form.degree.errors %}
+          <div class="inputline-errors">
+            {{ form.degree.errors }}
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="inputline-wrapper">
+          <div class="inputline clearfix educ_start">
+            <div class="inputline-labelblock">
+              <label for="{{ form.educ_start.id_for_label }}">Год начала</label>
+            </div>
+            <div class="inputline-inputblock">
+              {{ form.educ_start }}
+            </div>
+          </div>
+
+          {% if form.educ_start.errors %}
+          <div class="inputline-errors">
+            {{ form.educ_start.errors }}
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="inputline-wrapper">
+          <div class="inputline clearfix educ_end">
+            <div class="inputline-labelblock">
+              <label for="{{ form.educ_end.id_for_label }}">Год окончания</label>
+            </div>
+            <div class="inputline-inputblock">
+              {{ form.educ_end }}
+            </div>
+          </div>
+
+          {% if form.educ_end.errors %}
+          <div class="inputline-errors">
+            {{ form.educ_end.errors }}
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="inputline-wrapper">
+          <div class="inputline clearfix programme">
+            <div class="inputline-labelblock">
+              <label for="{{ form.programme.id_for_label }}">Направление обучения</label>
+            </div>
+            <div class="inputline-inputblock">
+              {{ form.programme }}
+            </div>
+          </div>
+
+          {% if form.programme.errors %}
+          <div class="inputline-errors">
+            {{ form.programme.errors }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="signup-submit-block">
+      <input class="std-btn std-btn-final" type="submit" value="Зарегистрироваться" />
+    </div>
+  </form>
+</div>
+
+{% endblock %}

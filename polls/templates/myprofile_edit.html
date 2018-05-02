@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="page myprofile myprofile-edit-page">
+  <div class="page-mainheader"><h1>Редактирование профиля</h1></div>
+
+  <div class="page-body">
+    <form method="post" action="">
+    {% csrf_token %}
+    <div class="myprofile-content clearfix">
+      <div class="myprofile-nav">
+        <ul>
+          <li><span class="active" id="main-info-btn">Основная информация</span></li>
+          <li><span id="educ-info-btn">Образование</span></li>
+        </ul>
+      </div>
+
+      <div class="myprofile-body">
+        <div class="myprofile-body-top">
+          <span class="myprofile-body-top-title" id="myprofile-body-top-title">
+            Основная информация
+          </span>
+
+          <!--<a class="myprofile-edit std-btn std-btn-final" href="#">Редактировать профиль</a>-->
+        </div>
+
+        {% if userform.non_field_errors or profileform.non_field_errors %}
+        <div class="form-errors">
+          <ul>
+            {% for non_field_error in userform.non_field_errors %}
+            <li>{{ non_field_error }}</li>
+
+            {% endfor %}
+            {% for non_field_error in profileform.non_field_errors %}
+            <li>{{ non_field_error }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <div class="myprofile-body-content">
+          <div class="main-info" id="main-info">
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Никнейм</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ userform.username }}
+              </div>
+            </div>
+
+            {{ userform.username.errors }}
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Имя</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ userform.first_name }}
+              </div>
+            </div>
+            {{ userform.first_name.errors }}
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Фамилия</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ userform.last_name }}
+              </div>
+            </div>
+            {{ userform.last_name.errors }}
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Отчество</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ profileform.patronymic }}
+              </div>
+            </div>
+            {{ profileform.patronymic.errors }}
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>E-mail</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ userform.email }}
+              </div>
+            </div>
+            {{ userform.email.errors }}
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Дата рождения</span>
+              </div>
+
+              <div class="info-line-body">
+                <div class="day-of-birth">
+                  {{ profileform.day_of_birth }}
+                </div>
+                <div class="month-of-birth">
+                  {{ profileform.month_of_birth }}
+                </div>
+                <div class="year-of-birth">
+                  {{ profileform.year_of_birth }}
+                </div>
+              </div>
+            </div>
+            {{ profileform.day_of_birth.errors }}
+            {{ profileform.month_of_birth.errors }}
+            {{ profileform.year_of_birth.errors }}
+          </div>
+
+
+          <div class="educ-info myprofile-div-hidden" id="educ-info">
+            <div class="educ-info-btnsblock">
+              <button class="add-educ" id="educ-info-addeduc" type="button">Добавить образование</button>
+            </div>
+            {% if error or form.non_field_errors or usereducation_formset.non_form_errors %}
+            <div class="form-errors">
+              <ul>
+                <li>{{ error }}</li>
+
+                {% for non_field_error in form.non_field_errors %}
+                <li>{{ non_field_error }}</li>
+                {% endfor %}
+
+                {% for non_form_error in usereducation_formset.non_form_errors %}
+                <li>{{ non_form_error }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+
+            {{ usereducs_formset.management_form }}
+            {% for form in usereducs_formset %}
+            <div class="educ-info-item">
+              {% if educationsNum > 1 %}
+              <div class="education-num">
+                <span>#{{forloop.counter}}</span>
+                <button class="delete" type="button">
+                  Удалить
+                </button>
+              </div>
+              {% else %}
+              <div class="education-num">
+                <span class="education-num-hidden">#{{forloop.counter}}</span>
+                <button class="delete delete-disabled" type="button" disabled>
+                  Удалить
+                </button>
+              </div>
+              {% endif %}
+
+              {% for non_field_error in form.non_field_errors %}
+                <li>{{ non_field_error }}</li>
+              {% endfor %}
+              <div class="info-line clearfix">
+                <div class="info-line-label">
+                  <span>Университет</span>
+                </div>
+
+                <div class="info-line-body">
+                  {{ form.university }}
+                </div>
+              </div>
+              {{ form.university.errors }}
+
+              <div class="info-line clearfix">
+                <div class="info-line-label">
+                  <span>Ступень обучения</span>
+                </div>
+
+                <div class="info-line-body">
+                  {{ form.degree }}
+                </div>
+              </div>
+              {{ form.degree.errors }}
+
+              <div class="info-line clearfix">
+                <div class="info-line-label">
+                  <span>Год начала</span>
+                </div>
+
+                <div class="info-line-body">
+                  {{ form.educ_start }}
+                </div>
+              </div>
+              {{ form.educ_start.errors }}
+
+              <div class="info-line clearfix">
+                <div class="info-line-label">
+                  <span>Год окончания</span>
+                </div>
+
+                <div class="info-line-body">
+                  {{ form.educ_end }}
+                </div>
+              </div>
+              {{ form.educ_end.errors }}
+
+              <div class="info-line clearfix">
+                <div class="info-line-label">
+                  <span>Направление обучения</span>
+                </div>
+
+                <div class="info-line-body">
+                  {{ form.programme }}
+                </div>
+              </div>
+              {{ form.programme.errors }}
+
+              {{ form.id }}
+            </div>
+
+            {% endfor %}
+
+          </div>
+        </div>
+
+        <div class="submit-block">
+          <input class="std-btn std-btn-final" type="submit" value="Сохранить" />
+          <a class="std-btn std-btn-final" href="{% url 'myprofile' %}">Отмена</a>
+        </div>
+      </div>
+    </div>
+
+
+  </form>
+  </div>
+</div>
+
+{% endblock %}

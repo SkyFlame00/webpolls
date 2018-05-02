@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+{% if user.is_anonymous %}
+<div class="hello-page">
+  <div class="tip">
+    <p>
+      Для прохождения анкетирования, пожалуйста, войдите в аккаунт или зарегистрируйтесь
+    </p>
+  </div>
+  <div class="account-actions">
+    <a class="std-btn signin-btn" id="signin-btn" href="#">Войти</a>
+    <a class="std-btn signup-btn" id="signup-btn" href="{% url 'signup' %}">Зарегистрироваться</a>
+  </div>
+</div>
+{% else %}
+Вы успешно вошли в систему. <a href="{% url 'logout' %}?next={{request.path}}">Выйти</a>
+{% endif %}
+
+{% endblock %}

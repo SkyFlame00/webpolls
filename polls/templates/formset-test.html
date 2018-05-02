@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block main %}
+<form action="" method="POST">
+  {{ formset.management_form }}
+    <table>
+        {% for form in formset %}
+        question_text{{ form.question_text }}
+        {% endfor %}
+    </table>
+</form>
+{% endblock %}

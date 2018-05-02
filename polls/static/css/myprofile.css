@@ -1,0 +1,273 @@
+.myprofile-content {
+
+}
+
+/* Myprofile nav */
+
+.myprofile-nav {
+  float: left;
+  width: 25%;
+  box-sizing: border-box;
+}
+
+.myprofile-nav {
+
+}
+
+.myprofile-nav ul li {
+  margin: 10px 0;
+  list-style-type: none;
+}
+
+.myprofile-nav ul li:first-child {
+  margin-top: 0;
+}
+
+.myprofile-nav ul li span {
+  display: inline-block;
+  padding: 4px 16px;
+  cursor: pointer;
+  border-radius: 14px;
+  transition: .2s ease-out;
+  border: 1px solid transparent;
+}
+
+.myprofile-nav ul li span:hover {
+  border: 1px solid rgb(220,220,220);
+}
+
+.myprofile-nav ul li span.active {
+  background: rgb(240,240,240);
+}
+
+.myprofile-nav ul li span.active:hover {
+  border-color: transparent;
+}
+
+.std-btn.myprofile-edit {
+  display: inline;
+  padding: 3px 12px;
+  font-size: .8em;
+}
+
+/* Myprofile body */
+
+.myprofile-body {
+  float: left;
+  width: 75%;
+  box-sizing: border-box;
+}
+
+.myprofile-div-hidden {
+  visibility: hidden;
+  display: none;
+}
+
+.myprofile-body-top {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(240,240,240);
+}
+
+.myprofile-body-top-title {
+  font-size: 1.3em;
+}
+
+.myprofile-edit {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.educ-info-item {
+  margin-top: 25px;
+  transition: .4s ease-out;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.educ-info-item-beforestart {
+  transform: translateX(-30px);
+  opacity: 0;
+}
+
+.info-line {
+  margin: 15px 0;
+  border: 1px solid #f1f1f1;
+}
+
+.info-line-label {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #fbfbfb;
+  box-sizing: border-box;
+}
+
+.info-line-label span {
+
+}
+
+.info-line-body {
+  float: left;
+  width: 80%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Myprofile edit page */
+
+.myprofile-edit-page .info-line {
+  display: flex;
+  align-items: center;
+  border: none;
+}
+
+.myprofile-edit-page .info-line-label {
+  padding: 0;
+  background: none;
+}
+
+.myprofile-edit-page .info-line-body {
+  padding: 0;
+}
+
+.myprofile-edit-page .info-line-body input, .myprofile-edit-page .info-line-body select {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  background: transparent;
+  border: 1px solid rgb(220,220,220);
+  border-radius: 8px;
+  box-sizing: border-box;
+  outline: none;
+  transition: .2s ease-out;
+}
+
+.myprofile-edit-page .info-line-body input:hover, .myprofile-edit-page .info-line-body select:hover {
+  border-color: #23a28d7d;
+  transition: .4s ease-out;
+}
+
+.myprofile-edit-page .info-line-body input:focus, .myprofile-edit-page .info-line-body select:focus {
+  border-color: var(--main-bg-color);
+}
+
+.myprofile-edit-page .day-of-birth {
+  float: left;
+  width: 28%;
+  margin-right: 2%;
+}
+
+.myprofile-edit-page .month-of-birth {
+  float: left;
+  width: 28%;
+  margin-right: 2%;
+}
+
+.myprofile-edit-page .year-of-birth {
+  float: left;
+  width: 40%;
+}
+
+.educ-info-btnsblock {
+  margin-bottom: 10px;
+}
+
+.myprofile-edit-page .add-educ {
+  padding: 4px 16px;
+  background: none;
+  font-size: .8em;
+  color: var(--main-bg-color);
+  border: 1px solid var(--main-bg-color);
+  outline: none;
+  transition: .2s ease-out;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.myprofile-edit-page .add-educ:hover {
+  color: #24c3a9;
+  border-color: #24c3a9;
+}
+
+.education-num {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.education-num span:first-child {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgb(250,250,250);
+  font-size: 1.2em;
+  border-radius: 14px;
+  transition: .2s ease-out;
+}
+
+.education-num-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.educ-info .education-num:first-child {
+  margin-top: 0;
+}
+
+.education-num .delete {
+  display: inherit;
+  padding: 4px 16px;
+  background: none;
+  font-size: .8em;
+  color: var(--main-bg-color);
+  border: 1px solid var(--main-bg-color);
+  outline: none;
+  transition: .2s ease-out;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.education-num .delete:hover {
+  color: #24c3a9;
+  border-color: #24c3a9;
+}
+
+.education-num .delete-disabled {
+  color: rgb(190,190,190) !important;
+  border-color: rgb(190,190,190) !important;
+  cursor: not-allowed;
+}
+
+.education-num .delete svg {
+  width: 20px;
+  height: 20px;
+  fill: rgb(222, 94, 94);
+  cursor: pointer;
+  transition: .2s ease-out;
+}
+
+.education-num .delete svg:hover {
+  fill: rgb(220, 42, 42)
+}
+
+.education-num-hidden {
+  visibility: hidden;
+  opacity: none;
+}
+
+.submit-block {
+  margin-top: 25px;
+  text-align: right;
+}
+
+.submit-block input {
+  font-size: .9em;
+  line-height: 1.3em;
+}
+
+.submit-block a {
+  margin-left: 10px;
+  font-size: .9em;
+  line-height: 1.3em;
+}

@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="page myprofile">
+  <div class="page-mainheader"><h1>Профиль</h1></div>
+
+  <div class="page-body">
+    <div class="myprofile-content clearfix">
+      <div class="myprofile-nav">
+        <ul>
+          <li><span class="active" id="main-info-btn">Основная информация</span></li>
+          <li><span id="educ-info-btn">Образование</span></li>
+        </ul>
+      </div>
+
+      <div class="myprofile-body">
+        <div class="myprofile-body-top">
+          <span class="myprofile-body-top-title" id="myprofile-body-top-title">
+            Основная информация
+          </span>
+
+          <a class="myprofile-edit std-btn std-btn-final" href="{% url 'myprofile_edit' %}">Редактировать профиль</a>
+        </div>
+
+        <div class="myprofile-body-content">
+          <div class="main-info" id="main-info">
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Никнейм</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ user.username }}
+              </div>
+            </div>
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Имя</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ user.first_name }}
+              </div>
+            </div>
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Фамилия</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ user.last_name }}
+              </div>
+            </div>
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Отчество</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ profile.patronymic }}
+              </div>
+            </div>
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>E-mail</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ user.email }}
+              </div>
+            </div>
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Дата рождения</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ profile.birth_date }}
+              </div>
+            </div>
+          </div>
+
+          <div class="educ-info myprofile-div-hidden" id="educ-info">
+
+            {% for education in educations %}
+            {% if educationsAmount > 1 %}
+            <div class="education-num"><span>#{{forloop.counter}}</span></div>
+            {% endif %}
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Университет</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ education.university }}
+              </div>
+            </div>
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Ступень обучения</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ education.get_degree_display }}
+              </div>
+            </div>
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Год начала</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ education.educ_start }}
+              </div>
+            </div>
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Год окончания</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ education.educ_end }}
+              </div>
+            </div>
+
+            <div class="info-line clearfix">
+              <div class="info-line-label">
+                <span>Направление обучения</span>
+              </div>
+
+              <div class="info-line-body">
+                {{ education.programme }}
+              </div>
+            </div>
+
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

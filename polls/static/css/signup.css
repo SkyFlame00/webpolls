@@ -1,0 +1,273 @@
+.signup-page {
+  display: block;
+  width: 700px;
+  margin: 0 auto;
+  padding-top: 50px;
+  transition: .4s ease-out;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.signup-page.signup-page-hidden {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.signup-mainheader {
+  position: relative;
+  margin-bottom: 40px;
+  background: linear-gradient(to top, white 0%, white 49%, rgb(190, 190, 190) calc(49% + 1px), white calc(49% + 1px));
+  text-align: center;
+}
+
+.signup-page h1 {
+  display: inline-block;
+  padding: 6px 22px;
+  background: white;
+  font-size: 1.4em;
+  font-weight: normal;
+  border: 1px solid #e2e2e2;
+  border-radius: 24px;
+}
+
+.signup-mainheader-decor {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  left: 0;
+  background: rgb(220,220,220);
+  content: '';
+  z-index: 1001;
+}
+
+.signup-page .inputline {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.signup-page .inputline:last-child {
+  margin-bottom: 0;
+}
+
+.signup-page .inputline-labelblock {
+  position: relative;
+  width: 140px;
+}
+
+.signup-page .inputline-labelblock .not-required {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: rgb(180,180,180);
+  font-size: .7em;
+}
+
+.signup-page .inputline-inputblock input, .inputline-inputblock select {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgb(220,220,220);
+  border-radius: 8px;
+  box-sizing: border-box;
+  outline: none;
+  transition: .2s ease-out;
+}
+
+.signup-page .inputline-inputblock input:hover, .inputline-inputblock select:hover {
+  border-color: #23a28d7d;
+  transition: .4s ease-out;
+}
+
+.signup-page .inputline-inputblock input:focus, .inputline-inputblock select:focus {
+  border-color: var(--main-bg-color);
+}
+
+.inputline-labelblock {
+  float: left;
+}
+
+.inputline-inputblock {
+  float: left;
+  width: calc(100% - 140px);
+}
+
+.inputline-inputblock select {
+  position: relative;
+  background: none;
+}
+
+.form-errors, .inputline-errors {
+  padding: 8px 12px;
+  font-size: .8em;
+  color: #da3232;
+  background: #fff3f3;
+  box-sizing: border-box;
+}
+
+.form-errors ul li, .inputline-errors ul li {
+  list-style-position: inside;
+  list-style-type: square;
+}
+
+.inputline-errors {
+  margin-left: 140px;
+}
+
+.signup-header {
+  margin: 40px 0 0 0;
+  background-image: linear-gradient(to top, white 0%, white 51%, rgb(190, 190, 190) calc(51% + 1px), white calc(51% + 1px));
+  text-align: center;
+}
+
+.signup-header h2 {
+  display: inline-block;
+  padding: 0 16px;
+  background: white;
+  font-size: 1.3em;
+  font-weight: normal;
+}
+
+/* Educ */
+
+.signup-educ {
+
+}
+
+.signup-addeduc-block {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.signup-addeduc {
+  padding: 4px 16px;
+  background: none;
+  font-size: .8em;
+  color: var(--main-bg-color);
+  border: 1px solid var(--main-bg-color);
+  outline: none;
+  transition: .2s ease-out;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.signup-addeduc:hover {
+  color: #24c3a9;
+  border-color: #24c3a9;
+}
+
+.signup-educ-item {
+  position: relative;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px dashed rgb(220,220,220);
+  transition: .4s ease-out;
+  box-sizing: border-box;
+}
+
+.signup-educ-item:last-child {
+  border-bottom-color: transparent;
+}
+
+.signup-educ-item-hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: .4s ease-out;
+}
+
+.signup-educ-item-deleted {
+  opacity: 0 !important;
+  transform: translateX(60px) !important;
+}
+
+.signup-educ-item-info {
+  position: absolute;
+  top: 0;
+  left: -60px;
+  text-align: center;
+  opacity: .8;
+  transition: .4s ease-out;
+}
+
+.signup-educ-item-info-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.signup-educ-item-num {
+  font-size: 1.5em;
+  color: rgb(200,200,200);
+}
+
+.signup-educ-item-num span {
+  display: block;
+  transform: translateX(0);
+  transition: .4s ease-out;
+  opacity: 1;
+  visibility: visible;
+}
+
+.signup-educ-item-num span.signup-educ-item-num-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-30px);
+}
+
+.signup-educ-item-del {
+  margin-top: 10px;
+}
+
+.signup-educ-item-del svg {
+  width: 18px;
+  height: 18px;
+  fill: rgb(222, 94, 94);
+  cursor: pointer;
+  transition: .2s ease-out;
+}
+
+.signup-educ-item-del svg:hover {
+  fill: rgb(220, 42, 42)
+}
+
+/* Submit button */
+
+.signup-submit-block {
+  margin-top: -30px;
+  text-align: center;
+}
+
+.signup-page input[type="submit"] {
+  margin: 10px 0 20px 0;
+  font-size: 1em;
+  padding: 8px 30px;
+}
+
+/* CSS for specific fields in the form */
+
+.signup-page .day-of-birth {
+  float: left;
+  width: 28%;
+  margin-right: 2%;
+}
+
+.signup-page .month-of-birth {
+  float: left;
+  width: 28%;
+  margin-right: 2%;
+}
+
+.signup-page .year-of-birth {
+  float: left;
+  width: 40%;
+}
+
+.signup-page .inputline.educ_start input, .inputline.educ_end input {
+  width: 150px;
+}
+
+.signup-page .inputline.degree select {
+  width: 150px;
+}
